@@ -19,8 +19,12 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+  // console.log("**********", req.body);
   Product.create(req.body)
-    .then(product => res.json(product))
+    .then(product => {
+      // console.log("product", product);
+      res.json(product);
+    })
     .catch(e => {
       console.log("error in product.create", e);
       next(e);

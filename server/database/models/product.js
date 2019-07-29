@@ -1,4 +1,4 @@
-const {STRING, DECIMAL, TEXT, INTEGER} = require("sequelize");
+const { STRING, DECIMAL, TEXT, INTEGER } = require("sequelize");
 const connection = require("../connection");
 
 const Product = connection.define("product", {
@@ -10,8 +10,8 @@ const Product = connection.define("product", {
     type: DECIMAL(10, 2),
     allowNull: false,
     validate: {
-      min: 0.00,
-      max: Math.floor(Number.MAX_SAFE_INTEGER),
+      min: 0.0,
+      max: Math.floor(Number.MAX_SAFE_INTEGER)
     }
   },
   description: {
@@ -24,7 +24,7 @@ const Product = connection.define("product", {
       min: 0,
       max: Math.floor(Number.MAX_SAFE_INTEGER)
     }
-  },
+  }
 });
 
 module.exports = Product;

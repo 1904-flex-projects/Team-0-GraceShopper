@@ -7,17 +7,16 @@ const Order = require("./order");
 const OrderItem = require("./orderItem");
 const Rating = require("./rating");
 
-
 // associations
 Session.belongsTo(User);
 User.hasMany(Session);
-Product.belongsToMany(Order, {through: OrderItem});
+Product.belongsToMany(Order, { through: OrderItem });
 OrderItem.belongsTo(Order);
 Order.belongsTo(Session);
 Session.hasMany(Order);
 Order.hasMany(OrderItem);
 Product.belongsTo(Category);
-Category.hasOne(Product);
+Category.hasMany(Product);
 Rating.belongsTo(Product);
 Rating.belongsTo(User);
 Product.hasMany(Rating);
@@ -30,5 +29,5 @@ module.exports = {
   OrderItem,
   Product,
   Category,
-  Rating,
+  Rating
 };

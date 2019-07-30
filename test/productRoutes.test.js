@@ -39,25 +39,4 @@ describe("Products Route:", () => {
       done();
     });
   });
-
-  // describe("POST /api/products", () => {
-  //   let product = {
-  //     name: "gumdrops",
-  //     price: 3.99,
-  //     description: "delicious",
-  //     stock: 5
-  //   };
-  //   it("respond with 201 created", async done => {
-  //     const res = await agent
-  //       .post("/api/products")
-  //       .send(product)
-  //       .expect(201)
-  //       .set("Accept", "application/json")
-  //       .end(err => {
-  //         if (err) return done(err);
-  //         done();
-  //       });
-  //     console.log("test result", res.body);
-  //   });
-  // });
 });

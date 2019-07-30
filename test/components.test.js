@@ -20,7 +20,7 @@ const history = createMemoryHistory();
 describe("React componnents", () => {
   let component;
   describe("Main", () => {
-    xit("should render correctly", () => {
+    it("should render correctly", () => {
       component = mount(
         <Provider store={store}>
           <Router history={history}>
@@ -34,7 +34,7 @@ describe("React componnents", () => {
   });
 
   describe("Home", () => {
-    xit("should render correctly", () => {
+    it("should render correctly", () => {
       component = mount(
         <Provider store={store}>
           <Router history={history}>
@@ -48,7 +48,7 @@ describe("React componnents", () => {
   });
 
   describe("Products", () => {
-    xit("should render correctly", () => {
+    it("should render correctly", () => {
       component = mount(
         <Provider store={store}>
           <Router history={history}>

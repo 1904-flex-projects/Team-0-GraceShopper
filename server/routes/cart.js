@@ -1,19 +1,37 @@
 const router = require('express').Router();
-// const Order = require('../database/models/order.js');
-// const Product = require('../database/models/Product.js');
+const Order = require('../database/models/order.js');
 const OrderItem = require('../database/models/orderItem.js');
-// const Session = require('../database/models/session.js');
+const Session = require('../database/models/session.js');
 
-router.get('/:orderId', (req, res, next) => {
+// order table and add row to orderItem
+
+// finding an order where the id matches the sessionId
+router.get('/:sessionId', (req, res, next) => {
+  Order.findOne({
+    where: {
+      id: req.params.sessionId,
+    },
+  }).then(order => res.json(order));
+});
+
+// finding an order
+router.get('/:orderId/cart', (req, res, next) => {
   OrderItem.findAll({
     where: {
       orderId: req.params.orderId,
     },
-  })
-    .then(cart => res.json(cart))
-    .catch(next);
+  }).then(products => res.json(products));
+});
+// get route by UserId
+router.get('/:userId/cart', (req, res, next) => {
+  OrderItem.findAll({
+    where: {
+      orderId: req.params.userId,
+    },
+  }).then(products => res.json(products));
 });
 
+// add to cart route
 router.post('/', (req, res, next) => {
   const orderId = parseInt(req.body.orderId, 10);
   const productId = parseInt(req.body.productId, 10);
@@ -23,6 +41,9 @@ router.post('/', (req, res, next) => {
     .then(order => res.json(order))
     .catch(next);
 });
+
+// delete from cart route
+
+// update quantity of items in cart
+
 module.exports = router;
-// everything in cart always in order items
-// route is orderItems/id

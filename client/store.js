@@ -8,9 +8,6 @@ let middleware = [];
 if (process.env.NODE_ENV === 'development') middleware = [thunkMiddleware, logger];
 else middleware = [thunkMiddleware];
 
-const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(...middleware)),
-);
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(...middleware)));
 
 export default store;

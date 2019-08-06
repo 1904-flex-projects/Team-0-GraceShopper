@@ -7,20 +7,24 @@ const Order = require('./order');
 const OrderItem = require('./orderItem');
 const Rating = require('./rating');
 
-
 // associations
 Session.belongsTo(User);
 User.hasMany(Session);
+
 Product.belongsToMany(Order, { through: OrderItem });
 Order.belongsToMany(Product, { through: OrderItem });
+
 Order.belongsTo(Session);
 Order.belongsTo(User);
+
 User.hasMany(Order);
 Session.hasMany(Order);
+Rating.belongsTo(User);
+
 Product.belongsTo(Category);
 Category.hasMany(Product);
+
 Rating.belongsTo(Product);
-Rating.belongsTo(User);
 Product.hasMany(Rating);
 
 module.exports = {

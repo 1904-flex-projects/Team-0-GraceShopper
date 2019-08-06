@@ -2,34 +2,51 @@ const router = require('express').Router();
 const Order = require('../database/models/order.js');
 const OrderItem = require('../database/models/orderItem.js');
 const Session = require('../database/models/session.js');
+const Product = require('../database/models/product');
 
 // order table and add row to orderItem
 
-// finding an order where the id matches the sessionId
-router.get('/:sessionId', (req, res, next) => {
-  Order.findOne({
-    where: {
-      id: req.params.sessionId,
-    },
-  }).then(order => res.json(order));
+// finding an order where the id matches the sessionId. gives the orders associated with the sessionId
+router.get('/:sessionId', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        sessionId: req.params.sessionId,
+      },
+    });
+    const orders = await OrderItem.findAll({
+      where: {
+        orderId: order.id,
+      },
+    });
+    res.send(orders);
+  } catch (e) {
+    next(e);
+  }
 });
 
-// finding an order
-router.get('/:orderId/cart', (req, res, next) => {
-  OrderItem.findAll({
-    where: {
-      orderId: req.params.orderId,
-    },
-  }).then(products => res.json(products));
+// finding an orderItem using orderId
+router.get('/:orderId/cart', async (req, res, next) => {
+  try {
+    const order = await OrderItem.findAll({
+      where: {
+        orderId: req.params.orderId,
+      },
+    });
+    res.json(order);
+  } catch (e) {
+    next(e);
+  }
 });
+
 // get route by UserId
-router.get('/:userId/cart', (req, res, next) => {
-  OrderItem.findAll({
-    where: {
-      orderId: req.params.userId,
-    },
-  }).then(products => res.json(products));
-});
+// router.get('/:userId/cart', (req, res, next) => {
+//   OrderItem.findAll({
+//     where: {
+//       orderId: req.params.userId,
+//     },
+//   }).then(products => res.json(products));
+// });
 
 // add to cart route
 router.post('/', (req, res, next) => {
@@ -43,6 +60,10 @@ router.post('/', (req, res, next) => {
 });
 
 // delete from cart route
+router.delete('/:productId', (req, res, next) => {
+  // deletiong from order items not the product table
+  Product.findByPk(req.params.productId).then(product => res.send(product.destroy()));
+});
 
 // update quantity of items in cart
 

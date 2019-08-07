@@ -1,7 +1,14 @@
-@import "./index.scss";
+@import './index.scss';
 
 .form-field {
   display: flex;
   justify-content: space-evenly;
   align-content: space-around;
+  margin: 25px auto;
+  position: relative;
+}
+
+.button {
+  display: block;
+  width: 100%;
 }

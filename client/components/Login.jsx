@@ -37,8 +37,8 @@ const Login = ({
 }) => (
   <div className="form-field">
     <Input handleChange={handleChange} fields={loginFields} />
-    <Button handleClick={handleSignIn} name="Sign In" />
-    <div>
+    <Button classname="button" handleClick={handleSignIn} name="Sign In" />
+    <div className="form-field">
       <Register
         registrationFields={registrationFields}
         handleRegister={handleRegistration}

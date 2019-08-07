@@ -12,3 +12,5 @@ export const ACTIVE_SESSION = 'ACTIVE_SESSION';
 export const SET_USER = 'SET_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REGISTRATION_INPUT = 'REGISTRATION_INPUT';
+export const GET_CART = 'GET_CART';
+export const UPDATE_CART = 'UPDATE_CART';

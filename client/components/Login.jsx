@@ -35,16 +35,22 @@ const Login = ({
   loginFields,
   registrationFields,
 }) => (
-  <div className="form-field">
-    <Input handleChange={handleChange} fields={loginFields} />
-    <Button classname="button" handleClick={handleSignIn} name="Sign In" />
-    <div className="form-field">
+  // highest level of form
+  <div className="grad">
+    <h2 className="h2">Login here</h2>
+    <div>
+      <Input handleChange={handleChange} fields={loginFields} />
+      <div className="buttondiv">
+        <Button classname="button" handleClick={handleSignIn} name="Sign In" />
+      </div>
       <Register
         registrationFields={registrationFields}
         handleRegister={handleRegistration}
         registrationInput={handleRegisterInput}
       />
     </div>
+
+    <div />
   </div>
 );
 

@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   signedIn: state.authenticate.signedIn,
   userId: state.authenticate.user.userId,
   sessionId: state.authenticate.session.sessionId,
+  products: state.products.allProducts,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -7,19 +7,23 @@ import Register from './Registration';
 const propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-  loginFields: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })).isRequired,
+  loginFields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   handleRegisterInput: PropTypes.func.isRequired,
   handleRegistration: PropTypes.func.isRequired,
-  registrationFields: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })).isRequired,
+  registrationFields: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 const Login = ({
@@ -31,14 +35,8 @@ const Login = ({
   registrationFields,
 }) => (
   <div>
-    <Input
-      handleChange={handleChange}
-      fields={loginFields}
-    />
-    <Button
-      handleClick={handleSignIn}
-      name="Sign In"
-    />
+    <Input handleChange={handleChange} fields={loginFields} />
+    <Button handleClick={handleSignIn} name="Sign In" />
     <div>
       <Register
         registrationFields={registrationFields}

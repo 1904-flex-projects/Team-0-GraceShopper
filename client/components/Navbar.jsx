@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 const propTypes = {
   signedIn: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
+// eslint-disable-next-line consistent-return
 const display = (signin) => {
   if (signin) {
     return (
       <li className="nav-link">
         <Link className="link" to="/">
-          Profile
+      Profile
         </Link>
       </li>
     );
@@ -20,7 +22,7 @@ const display = (signin) => {
   return '';
 };
 
-const Navbar = ({ signedIn, handleLogout }) => (
+const Navbar = ({ signedIn, handleLogout, isAdmin }) => (
   <nav className="nav">
     <ul>
       <li className="nav-link">
@@ -35,24 +37,33 @@ const Navbar = ({ signedIn, handleLogout }) => (
       </li>
       <li className="nav-link">
         <Link className="link" to="/cart">
-          Cart
+        Cart
         </Link>
       </li>
 
       {signedIn ? (
         <li className="nav-link">
           <Link className="link" to="/" onClick={handleLogout}>
-            Logout
+          Logout
           </Link>
         </li>
       ) : (
         <li className="nav-link">
           <Link className="link" to="/login">
-            Login
+          Login
           </Link>
         </li>
       )}
       {display(signedIn)}
+      {signedIn && isAdmin ? (
+        <li className="nav-link">
+          <Link className="link" to="/admin">
+          Admin
+          </Link>
+        </li>
+      ) : (
+        ''
+      )}
     </ul>
   </nav>
 );

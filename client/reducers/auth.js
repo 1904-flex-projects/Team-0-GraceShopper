@@ -62,6 +62,11 @@ const auth = (state = initialAuth, action) => {
         ...state,
         showRegisterSuccess: true,
       };
+    case types.SET_USER:
+      return {
+        ...state,
+        user: action.user,
+      }
     case types.FAILED_REGISTER:
       return {
         ...state,

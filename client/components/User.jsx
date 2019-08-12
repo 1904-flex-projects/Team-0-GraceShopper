@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 // import React from 'react';
 import { connect } from 'react-redux';
@@ -7,6 +7,40 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions/userActions';
 
 // const Container = props => <User {...props} />;
+const propTypes = {
+  // order: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //     updatedAt: PropTypes.string,
+  //     createdAt: PropTypes.string,
+  //   }),
+  // ).isRequired,
+  user: PropTypes.objectOf(
+    PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      email: PropTypes.email,
+      country: PropTypes.string,
+      state: PropTypes.string,
+      city: PropTypes.string,
+      postalCode: PropTypes.string,
+      street: PropTypes.string,
+      isAdmin: PropTypes.bool,
+    }),
+  ).isRequired,
+  // product: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //     name: PropTypes.string.isRequired,
+  //     // should this be decimal? don't see as an option
+  //     price: PropTypes.number.isRequired,
+  //     description: PropTypes.string.isRequired,
+  //     stock: PropTypes.number,
+  //     imageUrl: PropTypes.string,
+  //   }),
+  // ).isRequired,
+  // fetchUser: PropTypes.func.isRequired,
+};
 
 class User extends Component {
   componentDidMount() {
@@ -18,7 +52,6 @@ class User extends Component {
 
   render() {
     const { user } = this.props;
-    console.log('propshere****', this.props.user);
     return (
       <div className="">
         <h1>User Profile</h1>
@@ -26,10 +59,7 @@ class User extends Component {
         <h2>{user.email}</h2>
         <h1>Current Address</h1>
         <h3>{user.street}</h3>
-        <h3>
-          {`${user.city} ${user.state} ${user.postalCode}`}
-          {' '}
-        </h3>
+        <h3>{`${user.city} ${user.state} ${user.postalCode}`}</h3>
       </div>
     );
   }
@@ -43,10 +73,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id)),
 });
-// const connectComponent = connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// );
 
 const connectedUser = connect(
   mapStateToProps,
@@ -54,43 +80,4 @@ const connectedUser = connect(
 )(User);
 export default connectedUser;
 
-// User.propTypes = propTypes;
-// export default User;
-
-// const propTypes = {
-//   order: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       updatedAt: PropTypes.string,
-//       createdAt: PropTypes.string,
-//     }),
-//   ).isRequired,
-//   user: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       userName: PropTypes.string.isRequired,
-//       password: PropTypes.string.isRequired,
-//       firstName: PropTypes.string.isRequired,
-//       lastName: PropTypes.string.isRequired,
-//       email: PropTypes.email.isRequired,
-//       country: PropTypes.string,
-//       state: PropTypes.string,
-//       city: PropTypes.string,
-//       postalCode: PropTypes.string,
-//       street: PropTypes.string,
-//       isAdmin: PropTypes.bool,
-//     }),
-//   ).isRequired,
-//   product: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       name: PropTypes.string.isRequired,
-//       // should this be decimal? don't see as an option
-//       price: PropTypes.number.isRequired,
-//       description: PropTypes.string.isRequired,
-//       stock: PropTypes.number,
-//       imageUrl: PropTypes.string,
-//     }),
-//   ).isRequired,
-//   fetchUser: PropTypes.func.isRequired,
-// };
+User.propTypes = propTypes;

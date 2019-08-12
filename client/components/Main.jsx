@@ -8,7 +8,7 @@ import Products from '../containers/ProductsContainer';
 import Login from '../containers/AuthContainer';
 import Cart from '../containers/CartContainer';
 import SingleProduct from '../containers/SingleProductContainer';
-import User from '../components/User';
+import User from './User';
 import '../stylesheets/index.scss';
 import '../stylesheets/header.scss';
 

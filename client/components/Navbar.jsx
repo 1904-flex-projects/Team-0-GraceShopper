@@ -11,7 +11,7 @@ const display = (signin) => {
   if (signin) {
     return (
       <li className="nav-link">
-        <Link className="link" to="/">
+        <Link className="link" to="/user">
           Profile
         </Link>
       </li>

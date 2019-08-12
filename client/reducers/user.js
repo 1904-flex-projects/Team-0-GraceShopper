@@ -6,7 +6,7 @@ const userState = {
   orders: [],
   orderItems: [],
 };
-// TODO add user functionality
+
 const user = (state = userState, action) => {
   switch (action.type) {
     case FETCH_USER:

@@ -6,28 +6,29 @@ import Navbar from '../containers/NavbarContainer';
 import Home from './Home';
 import Products from '../containers/ProductsContainer';
 import Login from '../containers/AuthContainer';
-import Cart from './Cart';
+import Cart from '../containers/CartContainer';
 import SingleProduct from '../containers/SingleProductContainer';
+import User from '../components/User';
 import '../stylesheets/index.scss';
 import '../stylesheets/header.scss';
 
 const propTypes = {
-  getProducts: PropTypes.func.isRequired,
   onLoad: PropTypes.func.isRequired,
 };
 
 export default class Main extends Component {
   componentDidMount() {
-    const { getProducts, onLoad } = this.props;
+    const { onLoad } = this.props;
     onLoad();
-    getProducts();
   }
 
   render() {
     return (
       <div className="main-container">
         <header>
-          <h1><Link to="/">BAZAAR</Link></h1>
+          <h1>
+            <Link to="/">BAZAAR</Link>
+          </h1>
           <Navbar />
         </header>
         <main>
@@ -37,6 +38,7 @@ export default class Main extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/cart" component={Cart} />
             <Route path="/products/:productId" component={SingleProduct} />
+            <Route path="/user" component={User} />
             <Redirect to="/" />
           </Switch>
         </main>

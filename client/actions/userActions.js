@@ -14,11 +14,10 @@ const getProductsForOrders = ({ products, orderItems }) => ({
 // eslint-disable-next-line arrow-parens
 export const fetchUser = id => dispatch => {
   axios
-  .get(`/api/user/${id}`)
-  .then(({ data }) => dispatch(getUser(data)));
-  .catch(e => console.error('error in fetchUser Thunk', e))
+    .get(`/api/user/${id}`)
+    .then(({ data }) => dispatch(getUser(data)))
+    .catch(e => console.error('error in fetchUser Thunk', e));
 };
-
 // eslint-disable-next-line arrow-parens
 export const fetchUserOrders = id => dispatch => {
   axios
